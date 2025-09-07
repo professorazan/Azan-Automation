@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azan - YouTube & TikTok Automation</title>
+    <title>Azan Digital Products</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
@@ -23,6 +23,7 @@
             --text: #f1f5f9;
             --text-secondary: #94a3b8;
             --card-bg: rgba(30, 41, 59, 0.8);
+            --success: #10b981;
         }
 
         body {
@@ -63,11 +64,14 @@
             align-items: center;
         }
 
+        .logo-img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
         .logo-text {
             font-size: 28px;
             font-weight: 700;
-            color: var(--text);
-            letter-spacing: 1px;
             background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -178,10 +182,11 @@
             box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
         }
 
-        /* Services Section */
-        .services {
+        /* Free Products Section */
+        .free-products {
             padding: 100px 0;
             background-color: var(--primary);
+            text-align: center;
         }
 
         .section-title {
@@ -214,58 +219,38 @@
             margin: 0 auto;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background-color: var(--card-bg);
+        .free-products-content {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
             border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-        }
-
-        .service-icon {
-            font-size: 50px;
+        .free-products-content h3 {
+            font-size: 2rem;
             margin-bottom: 20px;
-            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
-        .service-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
+        .free-products-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        .service-card p {
-            color: var(--text-secondary);
-        }
-
-        /* Projects Section */
-        .projects {
+        /* Products Section */
+        .products {
             padding: 100px 0;
             background-color: var(--secondary);
         }
 
-        .projects-grid {
+        .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
 
-        .project-card {
+        .product-card {
             background-color: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
@@ -273,61 +258,116 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .project-card:hover {
+        .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
-        .project-image {
+        .product-image {
             height: 200px;
             overflow: hidden;
         }
 
-        .project-image img {
+        .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
         }
 
-        .project-card:hover .project-image img {
+        .product-card:hover .product-image img {
             transform: scale(1.1);
         }
 
-        .project-content {
+        .product-content {
             padding: 20px;
         }
 
-        .project-content h3 {
+        .product-content h3 {
             font-size: 20px;
             margin-bottom: 10px;
         }
 
-        .project-content p {
+        .product-content p {
             color: var(--text-secondary);
             margin-bottom: 15px;
             font-size: 14px;
         }
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--accent);
             margin-bottom: 15px;
         }
 
-        .project-tag {
-            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
+        /* Reviews Section */
+        .reviews {
+            padding: 100px 0;
+            background-color: var(--primary);
+        }
+
+        .reviews-slider {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 30px;
+            padding: 20px 0;
+            scrollbar-width: none;
+        }
+
+        .reviews-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .review-card {
+            scroll-snap-align: start;
+            flex: 0 0 calc(33.333% - 20px);
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+
+        .review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .review-name {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .review-rating {
+            color: gold;
+            margin-top: 5px;
+        }
+
+        .review-content {
+            color: var(--text-secondary);
+            font-style: italic;
         }
 
         /* About Section */
         .about {
             padding: 100px 0;
-            background-color: var(--primary);
+            background-color: var(--secondary);
         }
 
         .about-content {
@@ -400,37 +440,9 @@
             color: var(--text-secondary);
         }
 
-        /* WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(to right, #25D366 0%, #128C7E 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 100;
-            transition: all 0.3s;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-float i {
-            font-size: 28px;
-        }
-
         /* Footer */
         footer {
-            background-color: var(--secondary);
+            background-color: var(--primary);
             padding: 60px 0 30px;
         }
 
@@ -530,6 +542,10 @@
             .hero h1 {
                 font-size: 2.8rem;
             }
+            
+            .review-card {
+                flex: 0 0 calc(50% - 15px);
+            }
         }
 
         @media (max-width: 768px) {
@@ -564,6 +580,10 @@
             .hero p {
                 font-size: 1.1rem;
             }
+            
+            .review-card {
+                flex: 0 0 100%;
+            }
         }
 
         @media (max-width: 576px) {
@@ -579,30 +599,18 @@
                 padding: 12px 25px;
             }
             
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-            }
-            
-            .whatsapp-float i {
-                font-size: 24px;
+            .free-products-content {
+                padding: 30px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/923469531271" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <div class="logo-text">Azan Automation</div>
+                <div class="logo-text">Azan Digital</div>
             </div>
             <nav>
                 <button class="mobile-menu-btn">
@@ -610,10 +618,10 @@
                 </button>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#free">Free Products</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -622,99 +630,134 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>Automate Your YouTube & TikTok Growth</h1>
-            <p>Azan provides cutting-edge automation solutions to help content creators maximize their reach and engagement on popular platforms.</p>
-            <a href="#contact" class="btn">Get Started Today</a>
+            <h1>Premium Digital Products by Azan</h1>
+            <p>Discover high-quality digital products that will transform your online presence and boost your productivity</p>
+            <a href="#products" class="btn">Explore Products</a>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Free Products Section -->
+    <section class="free-products" id="free">
         <div class="container">
             <div class="section-title">
-                <h2>Our Services</h2>
-                <p>Comprehensive automation solutions for content creators</p>
+                <h2>Claim Your Free Products</h2>
+                <p>Get started with our exclusive free digital products</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <h3>YouTube Automation</h3>
-                    <p>Automate your content publishing, analytics, and channel management with our advanced tools.</p>
-                    <button class="btn" style="margin-top: 15px;">Learn More</button>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fab fa-tiktok"></i>
-                    </div>
-                    <h3>TikTok Automation</h3>
-                    <p>Grow your TikTok presence with our automated posting, engagement, and analytics tools.</p>
-                    <button class="btn" style="margin-top: 15px;">Learn More</button>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Content Automation</h3>
-                    <p>Streamline your content creation process with our intelligent automation solutions.</p>
-                    <button class="btn" style="margin-top: 15px;">Learn More</button>
-                </div>
+            <div class="free-products-content">
+                <h3>Limited Time Offer</h3>
+                <p>Download our premium digital products for free and experience the quality that Azan provides. This is a limited time offer, so claim yours now!</p>
+                <a href="https://professorazan.github.io/Digital-Products-/" class="btn">Claim Now</a>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
+    <!-- Products Section -->
+    <section class="products" id="products">
         <div class="container">
             <div class="section-title">
-                <h2>Featured Projects</h2>
-                <p>Check out some of our successful automation projects</p>
+                <h2>Featured Products</h2>
+                <p>Check out our premium digital products</p>
             </div>
-            <div class="projects-grid">
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="YouTube Growth Project">
+            <div class="products-grid">
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Digital Product">
                     </div>
-                    <div class="project-content">
-                        <h3>YouTube Growth Suite</h3>
-                        <p>Comprehensive automation solution for YouTube content creators.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">YouTube</span>
-                            <span class="project-tag">Automation</span>
-                            <span class="project-tag">Analytics</span>
-                        </div>
-                        <button class="btn">View Project</button>
+                    <div class="product-content">
+                        <h3>Premium Website Template</h3>
+                        <p>Fully responsive website template with modern design and customizable features.</p>
+                        <div class="product-price">$49.99</div>
+                        <button class="btn">Add to Cart</button>
                     </div>
                 </div>
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1616469829476-8953c5655574?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="TikTok Automation Project">
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Digital Product">
                     </div>
-                    <div class="project-content">
-                        <h3>TikTok Auto-Poster</h3>
-                        <p>Automated content scheduling and posting for TikTok accounts.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">TikTok</span>
-                            <span class="project-tag">Scheduling</span>
-                            <span class="project-tag">API</span>
-                        </div>
-                        <button class="btn">View Project</button>
+                    <div class="product-content">
+                        <h3>Social Media Kit</h3>
+                        <p>Complete social media package with templates, graphics, and scheduling tools.</p>
+                        <div class="product-price">$29.99</div>
+                        <button class="btn">Add to Cart</button>
                     </div>
                 </div>
-                <div class="project-card fade-in">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Analytics Dashboard">
+                <div class="product-card fade-in">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Digital Product">
                     </div>
-                    <div class="project-content">
-                        <h3>Analytics Dashboard</h3>
-                        <p>Comprehensive analytics platform for tracking social media performance.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Analytics</span>
-                            <span class="project-tag">Dashboard</span>
-                            <span class="project-tag">Reports</span>
+                    <div class="product-content">
+                        <h3>E-book Bundle</h3>
+                        <p>Collection of 5 premium e-books on digital marketing and business growth.</p>
+                        <div class="product-price">$39.99</div>
+                        <button class="btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customer Reviews</h2>
+                <p>See what our customers are saying about Azan Digital Products</p>
+            </div>
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer">
                         </div>
-                        <button class="btn">View Project</button>
+                        <div>
+                            <div class="review-name">Michael Johnson</div>
+                            <div class="review-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        "The website templates from Azan are incredible! Easy to customize and perfectly responsive. My business looks more professional than ever."
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer">
+                        </div>
+                        <div>
+                            <div class="review-name">Sarah Williams</div>
+                            <div class="review-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        "I've tried many digital product stores, but Azan stands out with their quality and customer support. The social media kit transformed my online presence!"
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Customer">
+                        </div>
+                        <div>
+                            <div class="review-name">David Chen</div>
+                            <div class="review-rating">★★★★☆</div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        "Great products at reasonable prices. The e-book bundle contained valuable insights that helped me grow my business. Highly recommended!"
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer">
+                        </div>
+                        <div>
+                            <div class="review-name">Emily Rodriguez</div>
+                            <div class="review-rating">★★★★★</div>
+                        </div>
+                    </div>
+                    <div class="review-content">
+                        "The free products were a great way to test the quality before purchasing. Now I'm a regular customer. Azan never disappoints!"
                     </div>
                 </div>
             </div>
@@ -726,25 +769,25 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Why Choose Azan?</h2>
-                    <p>With years of experience in social media automation, Azan provides comprehensive solutions that help content creators focus on what they do best - creating amazing content.</p>
-                    <p>Our team of experts stays ahead of platform algorithm changes to ensure your automation strategies remain effective and compliant.</p>
-                    <p>Founded by Azan, our company has helped hundreds of content creators grow their channels and maximize their reach through intelligent automation.</p>
-                    <a href="#contact" class="btn">Learn More About Azan</a>
+                    <h2>About Azan Digital</h2>
+                    <p>Azan Digital is a premium provider of high-quality digital products, founded by Azan with a vision to help businesses and individuals enhance their online presence.</p>
+                    <p>With years of experience in digital product creation, we understand what our customers need and deliver products that exceed expectations.</p>
+                    <p>Our team is dedicated to creating innovative solutions that help you succeed in the digital world.</p>
+                    <a href="#contact" class="btn">Contact Us</a>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80" alt="Content Creation">
+                    <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80" alt="About Azan Digital">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta" id="contact">
+    <section class="cta">
         <div class="container cta-content">
-            <h2>Ready to Automate Your Social Presence?</h2>
-            <p>Contact Azan today to learn how our automation services can help you grow your channels and save time.</p>
-            <a href="https://wa.me/923469531271" class="btn" target="_blank">Contact on WhatsApp</a>
+            <h2>Ready to Transform Your Digital Presence?</h2>
+            <p>Explore our premium digital products and take your business to the next level with Azan Digital</p>
+            <a href="#products" class="btn">Shop Now</a>
         </div>
     </section>
 
@@ -753,8 +796,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>About Azan</h3>
-                    <p>We provide cutting-edge automation solutions for YouTube and TikTok creators to help them grow their channels efficiently.</p>
+                    <h3>About Azan Digital</h3>
+                    <p>We provide high-quality digital products that help businesses and individuals enhance their online presence.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -766,32 +809,32 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#about">About Azan</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#free">Free Products</a></li>
+                        <li><a href="#reviews">Reviews</a></li>
+                        <li><a href="#about">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Services</h3>
+                    <h3>Products</h3>
                     <ul class="footer-links">
-                        <li><a href="#">YouTube Automation</a></li>
-                        <li><a href="#">TikTok Automation</a></li>
-                        <li><a href="#">Content Strategy</a></li>
-                        <li><a href="#">Analytics & Reports</a></li>
+                        <li><a href="#">Website Templates</a></li>
+                        <li><a href="#">Social Media Kits</a></li>
+                        <li><a href="#">E-books</a></li>
+                        <li><a href="#">Digital Assets</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contact Azan</h3>
+                    <h3>Contact Us</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-map-marker-alt"></i> 123 Business Ave, Suite 101</li>
-                        <li><i class="fas fa-phone"></i> +92 346 9531271</li>
-                        <li><i class="fas fa-envelope"></i> info@azan.com</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@azandigital.com</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Azan Automation. All rights reserved. Created by Azan.</p>
+                <p>&copy; 2023 Azan Digital. All rights reserved. Created by Azan.</p>
             </div>
         </div>
     </footer>
@@ -835,6 +878,13 @@
                 setTimeout(() => {
                     this.style.transform = '';
                 }, 200);
+                
+                // If it's the claim button, redirect after a delay
+                if (this.textContent === 'Claim Now') {
+                    setTimeout(() => {
+                        window.location.href = 'https://professorazan.github.io/Digital-Products-/';
+                    }, 500);
+                }
             });
         });
 
@@ -854,6 +904,27 @@
             element.style.transition = 'opacity 0.5s ease-out';
             observer.observe(element);
         });
+
+        // Auto-scroll for reviews
+        let reviewScrollPosition = 0;
+        const reviewsSlider = document.querySelector('.reviews-slider');
+        
+        function autoScrollReviews() {
+            if (reviewsSlider) {
+                reviewScrollPosition += 1;
+                
+                if (reviewScrollPosition >= reviewsSlider.scrollWidth - reviewsSlider.clientWidth) {
+                    reviewScrollPosition = 0;
+                }
+                
+                reviewsSlider.scrollTo({
+                    left: reviewScrollPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        setInterval(autoScrollReviews, 3000);
     </script>
 </body>
 </html>
