@@ -19,7 +19,6 @@
             --secondary: #1e293b;
             --accent: #FF0000;
             --accent2: #00f2ea;
-            --accent3: #FFDD00;
             --text: #f1f5f9;
             --text-secondary: #94a3b8;
             --card-bg: rgba(30, 41, 59, 0.8);
@@ -61,19 +60,6 @@
         .logo {
             display: flex;
             align-items: center;
-        }
-
-        .logo-img {
-            height: 40px;
-            width: 40px;
-            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            font-weight: bold;
-            font-size: 20px;
         }
 
         .logo-text {
@@ -278,19 +264,16 @@
             overflow: hidden;
             transition: all 0.3s;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transform-style: preserve-3d;
-            perspective: 1000px;
         }
 
         .portfolio-item:hover {
-            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2);
         }
 
         .portfolio-image {
             height: 200px;
             overflow: hidden;
-            position: relative;
         }
 
         .portfolio-image img {
@@ -353,13 +336,6 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            transition: transform 0.5s;
-        }
-
-        .about-image:hover {
-            transform: rotateY(5deg) rotateX(5deg);
         }
 
         .about-image img {
@@ -385,11 +361,6 @@
             border-radius: 15px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
         }
 
         .testimonial-content {
@@ -409,7 +380,6 @@
             border-radius: 50%;
             overflow: hidden;
             margin-right: 15px;
-            border: 2px solid var(--accent);
         }
 
         .author-avatar img {
@@ -432,7 +402,6 @@
         .cta {
             padding: 100px 0;
             text-align: center;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
         }
 
         .cta h2 {
@@ -443,17 +412,7 @@
         .cta p {
             max-width: 700px;
             margin: 0 auto 40px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .cta .btn {
-            background: var(--primary);
-            color: white;
-            margin: 0 10px;
-        }
-
-        .cta .btn:hover {
-            background: var(--secondary);
+            color: var(--text-secondary);
         }
 
         /* Footer */
@@ -567,34 +526,6 @@
             font-size: 28px;
         }
 
-        /* Email Button */
-        .email-float {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(to right, #EA4335 0%, #D14836 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 20px rgba(234, 67, 53, 0.4);
-            z-index: 100;
-            transition: all 0.3s;
-        }
-
-        .email-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(234, 67, 53, 0.6);
-        }
-
-        .email-float i {
-            font-size: 28px;
-        }
-
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
@@ -648,11 +579,6 @@
             .hero p {
                 font-size: 1.1rem;
             }
-
-            .email-float {
-                bottom: 100px;
-                right: 20px;
-            }
         }
 
         @media (max-width: 576px) {
@@ -668,39 +594,29 @@
                 padding: 12px 25px;
             }
             
-            .whatsapp-float, .email-float {
+            .whatsapp-float {
                 width: 50px;
                 height: 50px;
                 bottom: 20px;
                 right: 20px;
             }
             
-            .whatsapp-float i, .email-float i {
+            .whatsapp-float i {
                 font-size: 24px;
-            }
-
-            .email-float {
-                bottom: 80px;
             }
         }
     </style>
 </head>
 <body>
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/923469531271?text=Hello%20Azan!%20I'm%20interested%20in%20your%20YouTube%20and%20TikTok%20automation%20services." class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/923469531271" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Email Float Button -->
-    <a href="mailto:mwahab4255@gmail.com" class="email-float">
-        <i class="fas fa-envelope"></i>
     </a>
 
     <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <div class="logo-img">A</div>
                 <div class="logo-text">Azan <span>Automation</span></div>
             </div>
             <nav>
@@ -724,10 +640,7 @@
         <div class="container hero-content">
             <h1>YouTube & TikTok <span class="highlight">Automation Expert</span></h1>
             <p>I help content creators and businesses grow their presence on YouTube and TikTok through powerful automation strategies and proven techniques.</p>
-            <div>
-                <a href="#contact" class="btn">Get Started Today</a>
-                <a href="mailto:mwahab4255@gmail.com" class="btn">Email Me</a>
-            </div>
+            <a href="#contact" class="btn">Get Started Today</a>
         </div>
     </section>
 
@@ -815,7 +728,7 @@
                     <p>Hi, I'm Azan, a YouTube and TikTok automation specialist with years of experience in helping content creators and businesses grow their online presence.</p>
                     <p>I specialize in creating custom automation solutions that save time, increase engagement, and drive growth on these platforms.</p>
                     <p>My expertise includes content scheduling, audience engagement, analytics tracking, and growth strategy implementation.</p>
-                    <a href="mailto:mwahab4255@gmail.com" class="btn">Email Me</a>
+                    <a href="#contact" class="btn">Get In Touch</a>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80" alt="Azan Automation">
@@ -838,7 +751,7 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Johnson">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
                         </div>
                         <div class="author-details">
                             <h4>Michael Johnson</h4>
@@ -852,7 +765,7 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Williams">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
                         </div>
                         <div class="author-details">
                             <h4>Sarah Williams</h4>
@@ -866,7 +779,7 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="David Chen">
+                            <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Client">
                         </div>
                         <div class="author-details">
                             <h4>David Chen</h4>
@@ -883,10 +796,7 @@
         <div class="container">
             <h2>Ready to Automate Your Social Presence?</h2>
             <p>Contact me today to discuss how I can help you grow your YouTube and TikTok channels with powerful automation strategies.</p>
-            <div>
-                <a href="https://wa.me/923469531271?text=Hello%20Azan!%20I'm%20interested%20in%20your%20YouTube%20and%20TikTok%20automation%20services." class="btn" target="_blank">WhatsApp</a>
-                <a href="mailto:mwahab4255@gmail.com" class="btn">Email Me</a>
-            </div>
+            <a href="https://wa.me/923469531271" class="btn" target="_blank">Contact on WhatsApp</a>
         </div>
     </section>
 
@@ -928,7 +838,7 @@
                     <ul class="footer-links">
                         <li><i class="fas fa-map-marker-alt"></i> Pakistan</li>
                         <li><i class="fas fa-phone"></i> +92 346 9531271</li>
-                        <li><i class="fas fa-envelope"></i> mwahab4255@gmail.com</li>
+                        <li><i class="fas fa-envelope"></i> info@azan.com</li>
                     </ul>
                 </div>
             </div>
@@ -995,19 +905,6 @@
             element.style.opacity = '0';
             element.style.transition = 'opacity 0.5s ease-out';
             observer.observe(element);
-        });
-
-        // 3D effect for portfolio items
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('mousemove', function(e) {
-                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-                this.style.transform = `translateY(-10px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-            });
-
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(-10px)';
-            });
         });
     </script>
 </body>
