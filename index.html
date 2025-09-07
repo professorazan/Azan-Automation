@@ -5,27 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azan - YouTube & TikTok Automation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         :root {
-            --primary: #000000;
-            --secondary: #121212;
-            --accent: #FF0000;
-            --accent2: #00f2ea;
-            --text: #ffffff;
-            --text-secondary: #b3b3b3;
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #6366f1;
+            --accent2: #8b5cf6;
+            --accent3: #ec4899;
+            --text: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --card-bg: rgba(30, 41, 59, 0.8);
         }
 
         body {
             color: var(--text);
             line-height: 1.6;
-            background-color: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
@@ -38,13 +42,14 @@
 
         /* Header Styles */
         header {
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(15, 23, 42, 0.95);
             padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
 
         .header-container {
@@ -58,20 +63,14 @@
             align-items: center;
         }
 
-        .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
         .logo-text {
             font-size: 28px;
             font-weight: 700;
             color: var(--text);
             letter-spacing: 1px;
-        }
-
-        .logo-text span {
-            color: var(--accent);
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         nav ul {
@@ -88,11 +87,27 @@
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
+            transition: width 0.3s;
         }
 
         nav ul li a:hover {
             color: var(--accent);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
         }
 
         .mobile-menu-btn {
@@ -107,14 +122,33 @@
         /* Hero Section */
         .hero {
             padding: 160px 0 100px;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1738&q=80') no-repeat center center/cover;
             text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
+            background: linear-gradient(to right, var(--text) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
@@ -127,27 +161,27 @@
         .btn {
             display: inline-block;
             padding: 14px 30px;
-            background-color: var(--accent);
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
             color: white;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
             font-size: 16px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
 
         .btn:hover {
-            background-color: #cc0000;
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.4);
         }
 
         /* Services Section */
         .services {
             padding: 100px 0;
-            background-color: var(--secondary);
+            background-color: var(--primary);
         }
 
         .section-title {
@@ -170,7 +204,14 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background-color: var(--accent);
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         .services-grid {
@@ -180,22 +221,27 @@
         }
 
         .service-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            background-color: var(--card-bg);
+            border-radius: 15px;
             padding: 30px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            background-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
         .service-icon {
             font-size: 50px;
             margin-bottom: 20px;
-            color: var(--accent);
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .service-card h3 {
@@ -205,6 +251,77 @@
 
         .service-card p {
             color: var(--text-secondary);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+            background-color: var(--secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .project-tag {
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
         }
 
         /* About Section */
@@ -226,6 +343,9 @@
         .about-text h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            background: linear-gradient(to right, var(--text) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .about-text p {
@@ -235,7 +355,7 @@
 
         .about-image {
             flex: 1;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
@@ -249,8 +369,24 @@
         /* CTA Section */
         .cta {
             padding: 100px 0;
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80') no-repeat center center/cover;
             text-align: center;
+            position: relative;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.8) 100%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
         }
 
         .cta h2 {
@@ -262,6 +398,34 @@
             max-width: 700px;
             margin: 0 auto 40px;
             color: var(--text-secondary);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(to right, #25D366 0%, #128C7E 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float i {
+            font-size: 28px;
         }
 
         /* Footer */
@@ -291,7 +455,7 @@
             left: 0;
             width: 40px;
             height: 3px;
-            background-color: var(--accent);
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
         }
 
         .footer-column p {
@@ -335,7 +499,7 @@
         }
 
         .social-links a:hover {
-            background-color: var(--accent);
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
             transform: translateY(-3px);
         }
 
@@ -345,6 +509,16 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--text-secondary);
             font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
         }
 
         /* Responsive Design */
@@ -404,15 +578,31 @@
             .btn {
                 padding: 12px 25px;
             }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .whatsapp-float i {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/923469531271" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <div class="logo-text">AZ<span>AN</span></div>
+                <div class="logo-text">Azan Automation</div>
             </div>
             <nav>
                 <button class="mobile-menu-btn">
@@ -421,6 +611,7 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -430,10 +621,10 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container">
+        <div class="container hero-content">
             <h1>Automate Your YouTube & TikTok Growth</h1>
-            <p>We provide cutting-edge automation solutions and copyright protection services to help content creators maximize their reach and protect their work.</p>
-            <a href="#contact" class="btn">Get Started</a>
+            <p>Azan provides cutting-edge automation solutions to help content creators maximize their reach and engagement on popular platforms.</p>
+            <a href="#contact" class="btn">Get Started Today</a>
         </div>
     </section>
 
@@ -442,29 +633,89 @@
         <div class="container">
             <div class="section-title">
                 <h2>Our Services</h2>
-                <p>Comprehensive solutions for content creators</p>
+                <p>Comprehensive automation solutions for content creators</p>
             </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fab fa-youtube"></i>
                     </div>
                     <h3>YouTube Automation</h3>
                     <p>Automate your content publishing, analytics, and channel management with our advanced tools.</p>
+                    <button class="btn" style="margin-top: 15px;">Learn More</button>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-copyright"></i>
-                    </div>
-                    <h3>Copyright Protection</h3>
-                    <p>Protect your content from unauthorized use and monetize your intellectual property effectively.</p>
-                </div>
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-icon">
                         <i class="fab fa-tiktok"></i>
                     </div>
                     <h3>TikTok Automation</h3>
                     <p>Grow your TikTok presence with our automated posting, engagement, and analytics tools.</p>
+                    <button class="btn" style="margin-top: 15px;">Learn More</button>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Content Automation</h3>
+                    <p>Streamline your content creation process with our intelligent automation solutions.</p>
+                    <button class="btn" style="margin-top: 15px;">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Projects</h2>
+                <p>Check out some of our successful automation projects</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="YouTube Growth Project">
+                    </div>
+                    <div class="project-content">
+                        <h3>YouTube Growth Suite</h3>
+                        <p>Comprehensive automation solution for YouTube content creators.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">YouTube</span>
+                            <span class="project-tag">Automation</span>
+                            <span class="project-tag">Analytics</span>
+                        </div>
+                        <button class="btn">View Project</button>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1616469829476-8953c5655574?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="TikTok Automation Project">
+                    </div>
+                    <div class="project-content">
+                        <h3>TikTok Auto-Poster</h3>
+                        <p>Automated content scheduling and posting for TikTok accounts.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">TikTok</span>
+                            <span class="project-tag">Scheduling</span>
+                            <span class="project-tag">API</span>
+                        </div>
+                        <button class="btn">View Project</button>
+                    </div>
+                </div>
+                <div class="project-card fade-in">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Analytics Dashboard">
+                    </div>
+                    <div class="project-content">
+                        <h3>Analytics Dashboard</h3>
+                        <p>Comprehensive analytics platform for tracking social media performance.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Analytics</span>
+                            <span class="project-tag">Dashboard</span>
+                            <span class="project-tag">Reports</span>
+                        </div>
+                        <button class="btn">View Project</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -476,9 +727,10 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>Why Choose Azan?</h2>
-                    <p>With years of experience in social media automation and copyright law, we provide comprehensive solutions that help content creators focus on what they do best - creating amazing content.</p>
+                    <p>With years of experience in social media automation, Azan provides comprehensive solutions that help content creators focus on what they do best - creating amazing content.</p>
                     <p>Our team of experts stays ahead of platform algorithm changes to ensure your automation strategies remain effective and compliant.</p>
-                    <a href="#contact" class="btn">Learn More</a>
+                    <p>Founded by Azan, our company has helped hundreds of content creators grow their channels and maximize their reach through intelligent automation.</p>
+                    <a href="#contact" class="btn">Learn More About Azan</a>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80" alt="Content Creation">
@@ -489,10 +741,10 @@
 
     <!-- CTA Section -->
     <section class="cta" id="contact">
-        <div class="container">
+        <div class="container cta-content">
             <h2>Ready to Automate Your Social Presence?</h2>
-            <p>Contact us today to learn how our automation and copyright services can help you grow your channels and protect your content.</p>
-            <a href="#contact" class="btn">Get In Touch</a>
+            <p>Contact Azan today to learn how our automation services can help you grow your channels and save time.</p>
+            <a href="https://wa.me/923469531271" class="btn" target="_blank">Contact on WhatsApp</a>
         </div>
     </section>
 
@@ -502,7 +754,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>About Azan</h3>
-                    <p>We provide cutting-edge automation solutions for YouTube and TikTok creators, along with comprehensive copyright protection services.</p>
+                    <p>We provide cutting-edge automation solutions for YouTube and TikTok creators to help them grow their channels efficiently.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -515,7 +767,8 @@
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#services">Services</a></li>
-                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#about">About Azan</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -523,22 +776,22 @@
                     <h3>Services</h3>
                     <ul class="footer-links">
                         <li><a href="#">YouTube Automation</a></li>
-                        <li><a href="#">Copyright Protection</a></li>
                         <li><a href="#">TikTok Automation</a></li>
                         <li><a href="#">Content Strategy</a></li>
+                        <li><a href="#">Analytics & Reports</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3>Contact Us</h3>
+                    <h3>Contact Azan</h3>
                     <ul class="footer-links">
                         <li><i class="fas fa-map-marker-alt"></i> 123 Business Ave, Suite 101</li>
-                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-phone"></i> +92 346 9531271</li>
                         <li><i class="fas fa-envelope"></i> info@azan.com</li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Azan. All rights reserved.</p>
+                <p>&copy; 2023 Azan Automation. All rights reserved. Created by Azan.</p>
             </div>
         </div>
     </footer>
@@ -574,6 +827,33 @@
                 }
             });
         });
+
+        // Add click event to all buttons
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = '0';
+            element.style.transition = 'opacity 0.5s ease-out';
+            observer.observe(element);
+        });
     </script>
 </body>
-  </html>
+</html>
