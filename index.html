@@ -15,13 +15,17 @@
         }
 
         :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #FF0000;
-            --accent2: #00f2ea;
-            --text: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --card-bg: rgba(30, 41, 59, 0.8);
+            --primary: #0a0a0f;
+            --secondary: #151522;
+            --accent: #ff3e78;
+            --accent2: #ff7c00;
+            --youtube: #FF0000;
+            --tiktok: #00f2ea;
+            --text: #ffffff;
+            --text-secondary: #b8b8d0;
+            --card-bg: rgba(30, 30, 45, 0.8);
+            --shadow: 0 10px 30px rgba(255, 62, 120, 0.2);
+            --neon-glow: 0 0 15px rgba(255, 62, 120, 0.5);
         }
 
         body {
@@ -41,13 +45,13 @@
 
         /* Header Styles */
         header {
-            background-color: rgba(15, 23, 42, 0.95);
+            background-color: rgba(10, 10, 15, 0.95);
             padding: 20px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: var(--shadow);
             backdrop-filter: blur(10px);
         }
 
@@ -60,6 +64,21 @@
         .logo {
             display: flex;
             align-items: center;
+        }
+
+        .logo-img {
+            height: 45px;
+            width: 45px;
+            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-weight: bold;
+            font-size: 22px;
+            color: white;
+            box-shadow: var(--neon-glow);
         }
 
         .logo-text {
@@ -80,6 +99,7 @@
 
         nav ul li {
             margin-left: 30px;
+            position: relative;
         }
 
         nav ul li a {
@@ -103,7 +123,7 @@
         }
 
         nav ul li a:hover {
-            color: var(--accent);
+            color: var(--accent2);
         }
 
         nav ul li a:hover::after {
@@ -117,6 +137,11 @@
             border: none;
             color: var(--text);
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--accent);
         }
 
         /* Hero Section */
@@ -124,6 +149,17 @@
             padding: 160px 0 100px;
             text-align: center;
             position: relative;
+            background: url('https://images.unsplash.com/photo-1593642634524-b40b5baae6bb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80') no-repeat center center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 15, 0.85);
         }
 
         .hero-content {
@@ -143,6 +179,7 @@
             background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-shadow: var(--neon-glow);
         }
 
         .hero p {
@@ -163,12 +200,37 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 10px 25px rgba(255, 62, 120, 0.4);
+        }
+
+        .btn-youtube {
+            background: linear-gradient(to right, var(--youtube) 0%, #ff4d4d 100%);
+        }
+
+        .btn-tiktok {
+            background: linear-gradient(to right, var(--tiktok) 0%, #00b8d4 100%);
         }
 
         /* Services Section */
@@ -187,6 +249,7 @@
             margin-bottom: 20px;
             position: relative;
             display: inline-block;
+            color: var(--text);
         }
 
         .section-title h2::after {
@@ -219,22 +282,31 @@
             padding: 30px;
             text-align: center;
             transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 62, 120, 0.2);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(255, 62, 120, 0.3);
         }
 
         .service-icon {
             font-size: 50px;
             margin-bottom: 20px;
-            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        }
+
+        .youtube-color {
+            color: var(--youtube);
+        }
+
+        .tiktok-color {
+            color: var(--tiktok);
+        }
+
+        .automation-color {
+            color: var(--accent2);
         }
 
         .service-card h3 {
@@ -263,17 +335,20 @@
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.3s;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow);
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
 
         .portfolio-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2);
+            box-shadow: 0 15px 35px rgba(255, 62, 120, 0.3);
         }
 
         .portfolio-image {
             height: 200px;
             overflow: hidden;
+            position: relative;
         }
 
         .portfolio-image img {
@@ -294,6 +369,7 @@
         .portfolio-content h3 {
             font-size: 20px;
             margin-bottom: 10px;
+            color: var(--text);
         }
 
         .portfolio-content p {
@@ -321,9 +397,7 @@
         .about-text h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text);
         }
 
         .about-text p {
@@ -335,7 +409,14 @@
             flex: 1;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: var(--shadow);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover {
+            transform: rotateY(5deg);
         }
 
         .about-image img {
@@ -360,7 +441,13 @@
             background-color: var(--card-bg);
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
         }
 
         .testimonial-content {
@@ -380,6 +467,7 @@
             border-radius: 50%;
             overflow: hidden;
             margin-right: 15px;
+            border: 2px solid var(--accent);
         }
 
         .author-avatar img {
@@ -391,6 +479,7 @@
         .author-details h4 {
             font-size: 18px;
             margin-bottom: 5px;
+            color: var(--text);
         }
 
         .author-details p {
@@ -402,6 +491,8 @@
         .cta {
             padding: 100px 0;
             text-align: center;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+            color: white;
         }
 
         .cta h2 {
@@ -412,13 +503,25 @@
         .cta p {
             max-width: 700px;
             margin: 0 auto 40px;
-            color: var(--text-secondary);
+            opacity: 0.9;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--accent);
+            margin: 0 10px;
+        }
+
+        .cta .btn:hover {
+            background: var(--secondary);
+            color: white;
         }
 
         /* Footer */
         footer {
             background-color: var(--primary);
             padding: 60px 0 30px;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .footer-content {
@@ -433,6 +536,7 @@
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
+            color: var(--text);
         }
 
         .footer-column h3::after {
@@ -479,14 +583,15 @@
             justify-content: center;
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 62, 120, 0.1);
             border-radius: 50%;
-            color: var(--text);
+            color: var(--accent);
             transition: all 0.3s;
         }
 
         .social-links a:hover {
             background: linear-gradient(to right, var(--accent) 0%, var(--accent2) 100%);
+            color: white;
             transform: translateY(-3px);
         }
 
@@ -609,7 +714,7 @@
 </head>
 <body>
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/923469531271" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/923469531271?text=Hello%20Azan!%20I'm%20interested%20in%20your%20YouTube%20and%20TikTok%20automation%20services." class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -617,6 +722,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
+                <div class="logo-img">A</div>
                 <div class="logo-text">Azan <span>Automation</span></div>
             </div>
             <nav>
@@ -653,25 +759,28 @@
             </div>
             <div class="services-grid">
                 <div class="service-card fade-in">
-                    <div class="service-icon">
+                    <div class="service-icon youtube-color">
                         <i class="fab fa-youtube"></i>
                     </div>
                     <h3>YouTube Automation</h3>
                     <p>Automate your content publishing, analytics, and channel management with advanced tools and strategies.</p>
+                    <a href="#contact" class="btn btn-youtube">Learn More</a>
                 </div>
                 <div class="service-card fade-in">
-                    <div class="service-icon">
+                    <div class="service-icon tiktok-color">
                         <i class="fab fa-tiktok"></i>
                     </div>
                     <h3>TikTok Automation</h3>
                     <p>Grow your TikTok presence with automated posting, engagement, and analytics tools.</p>
+                    <a href="#contact" class="btn btn-tiktok">Learn More</a>
                 </div>
                 <div class="service-card fade-in">
-                    <div class="service-icon">
+                    <div class="service-icon automation-color">
                         <i class="fas fa-robot"></i>
                     </div>
                     <h3>Content Automation</h3>
                     <p>Streamline your content creation process with intelligent automation solutions.</p>
+                    <a href="#contact" class="btn">Learn More</a>
                 </div>
             </div>
         </div>
@@ -687,27 +796,27 @@
             <div class="portfolio-grid">
                 <div class="portfolio-item fade-in">
                     <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="YouTube Growth Project">
+                        <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80" alt="YouTube Growth Project">
                     </div>
                     <div class="portfolio-content">
                         <h3>YouTube Growth Suite</h3>
                         <p>Comprehensive automation solution for YouTube content creators.</p>
-                        <a href="#" class="btn">View Project</a>
+                        <a href="#" class="btn btn-youtube">View Project</a>
                     </div>
                 </div>
                 <div class="portfolio-item fade-in">
                     <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1616469829476-8953c5655574?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="TikTok Automation Project">
+                        <img src="https://images.unsplash.com/photo-1611605698335-8b156e8e4d65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80" alt="TikTok Automation Project">
                     </div>
                     <div class="portfolio-content">
                         <h3>TikTok Auto-Poster</h3>
                         <p>Automated content scheduling and posting for TikTok accounts.</p>
-                        <a href="#" class="btn">View Project</a>
+                        <a href="#" class="btn btn-tiktok">View Project</a>
                     </div>
                 </div>
                 <div class="portfolio-item fade-in">
                     <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Analytics Dashboard">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Analytics Dashboard">
                     </div>
                     <div class="portfolio-content">
                         <h3>Analytics Dashboard</h3>
@@ -731,7 +840,7 @@
                     <a href="#contact" class="btn">Get In Touch</a>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1072&q=80" alt="Azan Automation">
+                    <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Azan Automation">
                 </div>
             </div>
         </div>
@@ -751,7 +860,7 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Johnson">
                         </div>
                         <div class="author-details">
                             <h4>Michael Johnson</h4>
@@ -765,7 +874,7 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Williams">
                         </div>
                         <div class="author-details">
                             <h4>Sarah Williams</h4>
@@ -779,7 +888,7 @@
                     </div>
                     <div class="testimonial-author">
                         <div class="author-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Client">
+                            <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="David Chen">
                         </div>
                         <div class="author-details">
                             <h4>David Chen</h4>
@@ -796,7 +905,10 @@
         <div class="container">
             <h2>Ready to Automate Your Social Presence?</h2>
             <p>Contact me today to discuss how I can help you grow your YouTube and TikTok channels with powerful automation strategies.</p>
-            <a href="https://wa.me/923469531271" class="btn" target="_blank">Contact on WhatsApp</a>
+            <div>
+                <a href="https://wa.me/923469531271?text=Hello%20Azan!%20I'm%20interested%20in%20your%20YouTube%20and%20TikTok%20automation%20services." class="btn" target="_blank">WhatsApp</a>
+                <a href="mailto:mwahab4255@gmail.com" class="btn">Email Me</a>
+            </div>
         </div>
     </section>
 
@@ -838,7 +950,7 @@
                     <ul class="footer-links">
                         <li><i class="fas fa-map-marker-alt"></i> Pakistan</li>
                         <li><i class="fas fa-phone"></i> +92 346 9531271</li>
-                        <li><i class="fas fa-envelope"></i> info@azan.com</li>
+                        <li><i class="fas fa-envelope"></i> mwahab4255@gmail.com</li>
                     </ul>
                 </div>
             </div>
@@ -855,6 +967,8 @@
         
         menuBtn.addEventListener('click', () => {
             navMenu.classList.toggle('show');
+            menuBtn.innerHTML = navMenu.classList.contains('show') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
         
         // Smooth scrolling for navigation links
@@ -875,6 +989,7 @@
                     // Close mobile menu if open
                     if (navMenu.classList.contains('show')) {
                         navMenu.classList.remove('show');
+                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                     }
                 }
             });
@@ -905,6 +1020,19 @@
             element.style.opacity = '0';
             element.style.transition = 'opacity 0.5s ease-out';
             observer.observe(element);
+        });
+
+        // 3D effect for portfolio items
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('mousemove', function(e) {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                this.style.transform = `translateY(-10px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            });
+
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
         });
     </script>
 </body>
